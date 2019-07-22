@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './AppWithAutoSizer.css';
 //import loremIpsum from 'lorem-ipsum';
 import { loremIpsum } from "lorem-ipsum";
-import { List } from "react-virtualized";
+import { List, AutoSizer } from "react-virtualized";
 const rowCount = 10000
 ;
 class App extends Component {
@@ -47,13 +47,17 @@ class App extends Component {
         <h1 className="App-title">Welcome to React</h1>
       </header>
       <div className="list">
-      <List
-        width={rowWidth}
-        height={listHeight}
-        rowHeight={rowHeight}
-        rowRenderer={this.renderRow}
-        rowCount={this.list.length}
-        overscanRowCount={3} />
+          <AutoSizer>
+            {({width, height}) => (
+              <List
+              width={width}
+              height={height}
+              rowHeight={rowHeight}
+              rowRenderer={this.renderRow}
+              rowCount={this.list.length}
+              overscanRowCount={3} />
+            )}
+          </AutoSizer>
       </div>
     </div>
     );

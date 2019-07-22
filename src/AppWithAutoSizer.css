@@ -35,6 +35,7 @@
 
 .list {
   padding: 10px;
+  height: calc(100vh - 210px)
 }
 .row { 
   border-bottom: 1px solid #ebeced;
